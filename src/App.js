@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
 import './App.css';
 
@@ -36,16 +36,22 @@ class App extends React.Component {
     return (
       <div>
         <Header />
+
         <Switch>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/shop' component={ShopPage} />
-          <Route path='/signin' component={SignInAndSignUpPage} />
+          <Route basename={process.env.PUBLIC_URL} exact path='/' component={HomePage} />
+          <Route basename={process.env.PUBLIC_URL} path='/shop' component={ShopPage} />
+          <Route basename={process.env.PUBLIC_URL} path='/signin' component={SignInAndSignUpPage} />
         </Switch>
+
       </div >
     );
   }
 
 }
+/*
+npm install gh-pages — save-dev
+
+*/
 export default App;
 
 
