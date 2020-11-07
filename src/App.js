@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Route, HashRouter } from 'react-router-dom';
 
 import './App.css';
 
@@ -35,13 +35,16 @@ class App extends React.Component {
   render() {
     return (
       <div>
+
         <Header />
 
-        <Switch>
-          <Route basename={process.env.PUBLIC_URL} exact path='/' component={HomePage} />
-          <Route basename={process.env.PUBLIC_URL} path='/shop' component={ShopPage} />
-          <Route basename={process.env.PUBLIC_URL} path='/signin' component={SignInAndSignUpPage} />
-        </Switch>
+        <HashRouter basename='/'>
+
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route path='/signin' component={SignInAndSignUpPage} />
+
+        </HashRouter>
 
       </div >
     );
