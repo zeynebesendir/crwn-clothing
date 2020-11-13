@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import { auth } from '../../firebase/firebase.utils';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
@@ -48,4 +50,12 @@ const Header = () => (
   </HashRouter>
 );
 */
-export default Header;
+
+
+//use mapStateToProps to get properties from Reducers
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+//Connect is a High Order Component 
+export default connect(mapStateToProps)(Header);

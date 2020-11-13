@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './App.css';
 
@@ -8,7 +9,7 @@ import ShopPage from './pages/shop/shop.component.jsx';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Header from './components/header/header.component.jsx';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-
+import { setCurrentUser } from '../src/redux/user/user.actions';
 
 /*
 To store Login information:
@@ -16,35 +17,24 @@ function App()  is converted to class component so that we can have access to St
  */
 class App extends React.Component {
 
-  constructor() {
-    super();
-
-    this.state = {
-      currentUser: null
-    }
-  }
-
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
+
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot(snapShot => {
-          this.setState({
-            currentUser: {
-              id: snapShot.id,
-              ...snapShot.data()
-            }
-          }, () => {
-            console.log(this.state);
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
           });
         });
       }
 
-      this.setState({ currentUser: userAuth });
-
+      setCurrentUser(userAuth);
     });
   }
 
@@ -55,7 +45,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header />
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
@@ -85,11 +75,22 @@ render() {
   );
 }
 
-}
+}*/
+/*
 
 npm install gh-pages — save-dev
+yarn add redux redux-logger react-redux
 
 */
-export default App;
+
+
+//mapDispatchToProps: means whatever is passed in
+// going to be an action object that its going to be passed to reducer
+const mapDispatchToProps = dispatch => ({
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+});
+
+//first param is null because we dont need props from the Reducer
+export default connect(null, mapDispatchToProps)(App);
 
 
