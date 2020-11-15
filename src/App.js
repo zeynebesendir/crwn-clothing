@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import './App.css';
 
@@ -9,7 +10,10 @@ import ShopPage from './pages/shop/shop.component.jsx';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import Header from './components/header/header.component.jsx';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+
 import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors';
+
 
 /*
 To store Login information:
@@ -91,10 +95,15 @@ yarn add redux redux-logger react-redux
 yarn add reselect
 
 */
+
+/* use selector (see below)
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser
-});
+});*/
 
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
 
 //mapDispatchToProps: means whatever is passed in
 // going to be an action object that its going to be passed to reducer
