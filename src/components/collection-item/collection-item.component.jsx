@@ -32,7 +32,7 @@ const mapDispatchToProps = dispatch => ({
   //How It Works
   //create addItem, 
   //whenever addItem is called, it will receive the item as prop
-  //then passes it to addItem action creator that gives us back an object that its type =ADD_ITEM and payload= item
+  //then passes it to addItem action that gives us back an object that its type =ADD_ITEM and payload= item
   //and then the action will be dispatched to the Redux Store
   addItem: item => dispatch(addItem(item))
 });
