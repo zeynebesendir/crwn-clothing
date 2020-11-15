@@ -83,10 +83,12 @@ render() {
 }
 
 }*/
+
 /*
 
 npm install gh-pages — save-dev
 yarn add redux redux-logger react-redux
+yarn add reselect
 
 */
 const mapStateToProps = ({ user }) => ({
