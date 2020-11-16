@@ -6,9 +6,9 @@
 
 ## About The Project
 
-Crown Clothing (online shopping) is an **ongoing project**.
+[Crown Clothing](https://zeynebesendir.github.io/crwn-clothing) (e-commerce app) is an **ongoing project**.
 <br/>
-It has been developed by following [ZTM React Developer Course](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/).
+I have been developing the app by following [ZTM React Developer Course](https://www.udemy.com/course/complete-react-developer-zero-to-mastery/).
 
 The Project will be covering the following topics:
  * ~~React Basics~~
