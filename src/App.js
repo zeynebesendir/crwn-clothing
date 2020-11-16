@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -49,13 +49,13 @@ class App extends React.Component {
     this.unsubscribeFromAuth();
   }
 
-  /*DEVELOPMENT*/
+  /*DEVELOPMENT
 
   render() {
     return (
       <div>
         <Header />
-        <Switch >
+        <Switch basename='/'>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
@@ -71,31 +71,33 @@ class App extends React.Component {
       </div>
     );
   }
-}
-
-/* GITHUB.IO
-render() {
-  return (
-    <div>
-      <Header />
-      <HashRouter basename='/'>
-        <Route exact path='/' component={HomePage} />
-        <Route path='/shop' component={ShopPage} />
-        <Route exact path='/checkout' component={CheckoutPage} />
-        <Route exact path='/signin' render={() =>
-          this.props.currentUser ? (
-            <Redirect to='/' />
-          ) : (
-              <SignInAndSignUpPage />
-            )
-        }
-        />
-      </HashRouter>
-    </div >
-  );
-}
 }*/
+
+  /* GITHUB.IO*/
+  render() {
+    return (
+      <div>
+        <Header />
+        <HashRouter basename='/'>
+          <Route exact path='/' component={HomePage} />
+          <Route path='/shop' component={ShopPage} />
+          <Route path='/checkout' component={CheckoutPage} />
+          <Route exact path='/signin' render={() =>
+            this.props.currentUser ? (
+              <Redirect to='/' />
+            ) : (
+                <SignInAndSignUpPage />
+              )
+          }
+          />
+        </HashRouter>
+      </div >
+    );
+  }
+}
 /*
+"react-scripts": "3.4.3",
+npm run deploy : err ELIFECYCLE => npm install
  
 npm install gh-pages — save-dev
 yarn add redux redux-logger react-redux
