@@ -1,22 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { withRouter } from 'react-router-dom';
+
 
 import CustomButton from '../custom-button/custom-button.component';
 import CartItem from '../cart-item/cart-item.component';
 import { selectCartItems } from '../../redux/cart/cart.selectors';
-
+import { toggleCartHidden } from '../../redux/cart/cart.actions';
 
 import './cart-dropdown.styles.scss';
 
-const CartDropdown = ({ cartItems }) => (
+/*
+false values in JS:
+0
+false
+undefined
+null
+NaN
+""
+
+So, cartItems.length (0) can be false
+*/
+const CartDropdown = ({ cartItems, history, dispatch }) => (
     <div className='cart-dropdown'>
         <div className='cart-items'>
-            {cartItems.map(cartItem => (
-                <CartItem key={cartItem.id} item={cartItem} />
-            ))}
+            {cartItems.length ? (
+                cartItems.map(cartItem => (
+                    <CartItem key={cartItem.id} item={cartItem} />
+                ))
+            ) : (
+                    <span className='empty-message'>Your cart is empty</span>
+                )}
         </div>
-        <CustomButton>GO TO CHECKOUT</CustomButton>
+        <CustomButton onClick={() => {
+            history.push('/checkout');
+            dispatch(toggleCartHidden());
+        }}
+        >
+            GO TO CHECKOUT
+        </CustomButton>
     </div>
 );
 
@@ -37,4 +60,16 @@ const mapStateToProps = createStructuredSelector({
     cartItems: selectCartItems
 });
 
-export default connect(mapStateToProps)(CartDropdown);
+//Wrap the Connected component inside the withRouter
+//as the higher order components take components as arguments, 
+//withRouter will take connect(mapStateToProps)(CartDropdown) as argument
+
+//with withRouter,the component will have access to History
+
+export default withRouter(connect(mapStateToProps)(CartDropdown));
+
+//IF we need to make one-off action dispatchers, no need to write mapDispatchToProps
+//Because:
+//Connect actually passes the dispatcher into the component as a prop,
+//If we dont supply dispatcher as a second param
+
