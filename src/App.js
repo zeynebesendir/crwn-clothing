@@ -49,17 +49,19 @@ class App extends React.Component {
     this.unsubscribeFromAuth();
   }
 
+  /*DEVELOPMENT*/
+
   render() {
     return (
       <div>
         <Header />
-        <Switch>
-          <Route exact path='/crwn-clothing/' component={HomePage} />
+        <Switch >
+          <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
           <Route exact path='/signin' render={() =>
             this.props.currentUser ? (
-              <Redirect to='/crwn-clothing' />
+              <Redirect to='/' />
             ) : (
                 <SignInAndSignUpPage />
               )
@@ -71,33 +73,34 @@ class App extends React.Component {
   }
 }
 
-/*
+/* GITHUB.IO
 render() {
   return (
     <div>
-
       <Header />
-
       <HashRouter basename='/'>
-
         <Route exact path='/' component={HomePage} />
         <Route path='/shop' component={ShopPage} />
-        <Route path='/signin' component={SignInAndSignUpPage} />
-
+        <Route exact path='/checkout' component={CheckoutPage} />
+        <Route exact path='/signin' render={() =>
+          this.props.currentUser ? (
+            <Redirect to='/' />
+          ) : (
+              <SignInAndSignUpPage />
+            )
+        }
+        />
       </HashRouter>
-
     </div >
   );
 }
-
 }*/
-
 /*
-
+ 
 npm install gh-pages — save-dev
 yarn add redux redux-logger react-redux
 yarn add reselect
-
+ 
 */
 
 /* use selector (see below)

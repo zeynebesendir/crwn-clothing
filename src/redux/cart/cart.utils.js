@@ -20,3 +20,21 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     ////this statement: gets all the cartItems array and adds the cartItemToAdd end of the array
     return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
+
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
+    const existingCartItem = cartItems.find(
+        cartItem => cartItem.id === cartItemToRemove.id
+    );
+
+    if (existingCartItem.quantity === 1) {
+        //remove the item if there is only 1
+        return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id);
+    }
+
+    return cartItems.map(cartItem =>
+        //decrease the quantity if there is more than 1
+        cartItem.id === cartItemToRemove.id
+            ? { ...cartItem, quantity: cartItem.quantity - 1 }
+            : cartItem
+    );
+};
