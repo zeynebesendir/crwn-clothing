@@ -14,8 +14,8 @@ The Project will be covering the following topics:
  * ~~React Basics~~
  * ~~React Router & Routing~~
  * ~~Firebase~~
- * ~~Redux~~    **👋I'm here!👋**
- * Session Storage
+ * ~~Redux~~   
+ * ~~Session Storage~~  **👋I'm here!👋**
  * State Normalization
  * Stripe Payment Integration
  * HOC Patterns
