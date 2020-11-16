@@ -1,7 +1,10 @@
 # Crown Clothing
 
-<img src="src/assets/crownClothing.png"  height="300"/>
-
+<img 
+  src="src/assets/crownClothing.png"  
+  height="300" 
+  onclick="window.open("https://zeynebesendir.github.io/crwn-clothing")"
+/>
 
 ## About The Project
 
