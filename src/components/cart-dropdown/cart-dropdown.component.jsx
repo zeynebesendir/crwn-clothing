@@ -30,11 +30,15 @@ const CartDropdown = ({ cartItems, history, dispatch }) => (
                     <CartItem key={cartItem.id} item={cartItem} />
                 ))
             ) : (
-                    <span className='empty-message'>Your cart is empty</span>
-                )}
+                <span className='empty-message'>Your cart is empty</span>
+            )}
         </div>
         <CustomButton onClick={() => {
             history.push('/checkout');
+
+            //dispatch called here without writing it below
+            //connect already passes dispatch if we dont supply dispatchToProps 
+            //just get the dispatch as prop and use
             dispatch(toggleCartHidden());
         }}
         >

@@ -13,28 +13,19 @@ import App from './App';
 Provider will wrap around our app
 As it is parent of everthing, it will let us to reach Store*/
 
+/*
+import PersistGate
+wrap the App with PersistGate, so the app could access the persisted store
+
+it will receive the store and fire off actions that rehydrate the state
+*/
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate persistor={persistor}>
-      <BrowserRouter>
+    <BrowserRouter>
+      <PersistGate persistor={persistor}>
         <App />
-      </BrowserRouter>
-    </PersistGate>
+      </PersistGate>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 )
-
-/*
-
-Redux set up:
-
-1. Wrap the Application wit Provider (index.js)
-2. Create Reducer (root-reducer.js)
-3. Create Reducers for the states (user.reducer etc.)
-4. Create Store file with middleware
-5. Create Action (user.action etc) "Action Type" and  "Action Type" in the reducer must be same
-
-Actions will be update Reducers with the appropriate values
-Reducer will create a new state object with action.payload
-Store will take the Reducer and Middleware and stores them
-*/
