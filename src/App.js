@@ -77,7 +77,7 @@ class App extends React.Component {
     return (
       <div>
         <Header />
-        <Switch>
+        <Switch basename='/'>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
@@ -128,6 +128,8 @@ yarn add redux-persist //to use local or session storage -start setting up from 
 
 //??
 npm install node-sass 
+
+npm i react-stripe-checkout
 */
 
 
