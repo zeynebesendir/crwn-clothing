@@ -48,11 +48,12 @@ class App extends React.Component {
   componentWillUnmount() {
     this.unsubscribeFromAuth();
   }
-
+  /*GITHUB.IO*/
   render() {
     return (
       <div>
         <Header />
+
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
