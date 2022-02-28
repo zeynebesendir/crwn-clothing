@@ -49,35 +49,11 @@ class App extends React.Component {
     this.unsubscribeFromAuth();
   }
 
-  /*DEVELOPMENT
-
   render() {
     return (
       <div>
         <Header />
-        <Switch basename='/'>
-          <Route exact path='/' component={HomePage} />
-          <Route path='/shop' component={ShopPage} />
-          <Route exact path='/checkout' component={CheckoutPage} />
-          <Route exact path='/signin' render={() =>
-            this.props.currentUser ? (
-              <Redirect to='/' />
-            ) : (
-                <SignInAndSignUpPage />
-              )
-          }
-          />
-        </Switch>
-      </div>
-    );
-  }  /* GITHUB.IO*}*/
-
-
-  render() {
-    return (
-      <div>
-        <Header />
-        <Switch basename='/'>
+        <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
           <Route exact path='/checkout' component={CheckoutPage} />
@@ -97,7 +73,8 @@ class App extends React.Component {
   }
 }
 
-/* use selector (see below)
+/*
+use selector (see below)
 const mapStateToProps = ({ user }) => ({
   currentUser: user.currentUser
 });*/
