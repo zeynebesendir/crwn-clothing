@@ -15,11 +15,11 @@ The Project will be covering the following topics:
  * ~~React Router & Routing~~
  * ~~Firebase~~
  * ~~Redux~~   
- * ~~Session Storage~~  **👋I'm here!👋**
- * State Normalization
- * Stripe Payment Integration
- * HOC Patterns
+ * ~~Session Storage~~  
+ * ~~State Normalization~~
+ * ~~Stripe Payment Integration~~
+ * ~~Hooks~~
+ * HOC Patterns **👋I'm here!👋**
  * Async Redux
- * Hooks
  * GraphQL
  * Testing
